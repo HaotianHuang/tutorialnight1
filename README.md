@@ -1,2 +1,2 @@
 # tutorialnight1
-reference for teachers
+-reference of complete tutorialnight1 project (w/o challenge task)
