@@ -9,13 +9,12 @@
   <body>
 
     <?php
-
-      # NOTE: THe reason parts 4-6 are skipped is they are part of the EXTENSION challenge! See "tutorialnight1-teacher (CHALLENGE TASK)" for complete version.
 			
       # 0. store posted variables
 			$weight = $_POST['weight'];
 			$height = $_POST['height'];
 			$eGFR = $_POST['eGFR'];
+			$sex = $_POST['sex'];
 
       # 1. case when eGFR >= 60
 			if ($eGFR >= 60) {
@@ -33,6 +32,23 @@
 			if ($eGFR < 40) {
 				$dosePerKG = 4;
 				$maxDose = 400;
+			}
+
+      # 4. convert height fromm cm -> m
+			$heightInMetres = $height / 100;
+
+      # 5. calculate BMI
+			$BMI = $weight / ($heightInMetres * $heightInMetres);
+
+      # 6. case when BMI >= 30
+			if ($BMI >= 30) {
+
+				if ($sex == 'Male') {
+					$weight = 50 + 0.91 * ($height - 152.4);
+				} else {
+					$weight = 45.5 + 0.91 * ($height - 152.4);
+				}
+
 			}
 
       # 7. calculate dose and round it!
